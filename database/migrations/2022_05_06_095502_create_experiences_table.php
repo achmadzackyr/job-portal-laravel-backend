@@ -14,8 +14,18 @@ return new class extends Migration
     public function up()
     {
         Schema::create('experiences', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('user_id')->primary();
+            $table->boolean('is_current_job');
+            $table->date('start_date');
+            $table->date('end_date')->nullable();
+            $table->string('job_title');
+            $table->string('company_name');
+            $table->string('job_location_city');
+            $table->string('job_location_state');
+            $table->string('job_location_country');
+            $table->longText('description')->nullable();
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

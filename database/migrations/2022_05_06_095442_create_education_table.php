@@ -14,8 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('education', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('user_id')->primary();
+            $table->string('degree_name');
+            $table->string('major');
+            $table->string('institute_name');
+            $table->date('starting_date');
+            $table->date('completion_date');
+            $table->integer('cgpa');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

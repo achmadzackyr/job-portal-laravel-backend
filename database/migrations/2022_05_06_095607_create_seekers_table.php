@@ -14,8 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('seekers', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('user_id')->primary();
+            $table->string('first_name');
+            $table->string('last_name')->nullable();
+            $table->integer('current_salary')->nullable();
+            $table->boolean('is_anually_monthly');
+            $table->string('currency');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
