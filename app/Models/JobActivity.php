@@ -5,19 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Skill extends Model
+class JobActivity extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function seeker_skills()
+    public function user()
     {
-        return $this->hasMany(SeekerSkill::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function job_skills()
+    public function job()
     {
-        return $this->hasMany(JobSkill::class);
+        return $this->belongsTo(Job::class);
     }
 }

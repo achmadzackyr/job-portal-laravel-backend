@@ -78,4 +78,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Seeker::class);
     }
+
+    public function job_activities()
+    {
+        return $this->hasMany(JobActivity::class);
+    }
+
+    public function jobs()
+    {
+        return $this->hasMany(Job::class);
+    }
 }
